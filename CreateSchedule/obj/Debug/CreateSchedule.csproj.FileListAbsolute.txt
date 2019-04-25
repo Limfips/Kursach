@@ -1,0 +1,6 @@
+E:\Kursach\Cod\WindowsApp\CreateSchedule\bin\Debug\CreateSchedule.dll
+E:\Kursach\Cod\WindowsApp\CreateSchedule\bin\Debug\CreateSchedule.pdb
+E:\Kursach\Cod\WindowsApp\CreateSchedule\obj\Debug\CreateSchedule.csprojAssemblyReference.cache
+E:\Kursach\Cod\WindowsApp\CreateSchedule\obj\Debug\CreateSchedule.csproj.CoreCompileInputs.cache
+E:\Kursach\Cod\WindowsApp\CreateSchedule\obj\Debug\CreateSchedule.dll
+E:\Kursach\Cod\WindowsApp\CreateSchedule\obj\Debug\CreateSchedule.pdb

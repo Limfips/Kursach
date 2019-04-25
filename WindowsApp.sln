@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsApp", "WindowsApp\WindowsApp.csproj", "{5B3F141F-1B6D-4596-8436-DD5077C2B1DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSchedule", "CreateSchedule\CreateSchedule.csproj", "{2B1E1710-18C0-4364-A08C-2D72CC32C5EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B3F141F-1B6D-4596-8436-DD5077C2B1DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B3F141F-1B6D-4596-8436-DD5077C2B1DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B3F141F-1B6D-4596-8436-DD5077C2B1DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B3F141F-1B6D-4596-8436-DD5077C2B1DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B1E1710-18C0-4364-A08C-2D72CC32C5EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B1E1710-18C0-4364-A08C-2D72CC32C5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B1E1710-18C0-4364-A08C-2D72CC32C5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B1E1710-18C0-4364-A08C-2D72CC32C5EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
