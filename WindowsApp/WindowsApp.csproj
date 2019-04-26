@@ -70,6 +70,7 @@
             <SubType>Code</SubType>
         </Compile>
         <Compile Include="configs\CheckProgram.cs" />
+        <Compile Include="configs\GenericFile.cs" />
         <Compile Include="HandlerDir\Handler.cs" />
         <Compile Include="MainWindow.xaml.cs">
             <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -93,6 +94,9 @@
     <ItemGroup>
         <None Include="App.config" />
         <None Include="packages.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <Resource Include="Images\backspace.png" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

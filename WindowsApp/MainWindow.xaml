@@ -6,6 +6,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
@@ -14,40 +15,85 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainForm" Height="450" Width="800" MinWidth="800" MinHeight="450">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <materialDesign:Card VerticalAlignment="Top" FontSize="13" Grid.ColumnSpan="2">
-            <Menu>
-                <MenuItem Header="File" >
-                    <MenuItem Header="New Project" ></MenuItem>
-                    <MenuItem Header="Open Project" >
-                        <MenuItem Header="WinForms"></MenuItem>
-                        <MenuItem Header="WPF" ></MenuItem>
+        <Grid x:Name="MainGrid" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:Card VerticalAlignment="Top" FontSize="13" Grid.ColumnSpan="2">
+                <Menu>
+                    <MenuItem Header="Новое расписание" Click="MenuItemCreateTimetable_OnClick"/>
+                    <MenuItem Header="Обновить список" Click="GetFiles_OnClick"/>
+                    <MenuItem Header="Выход" Click="MenuItemExit_OnClick"/>
+                </Menu>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="1" Grid.Column="0" Margin="0,1,0,0">
+                
+                <ScrollViewer>
+                <StackPanel>
+                    <materialDesign:Card>
+                        <TextBlock Text="Список ваших файлов" Margin="12"
+                                   Style="{DynamicResource MaterialDesignBody2TextBlock}"/>
+                    </materialDesign:Card>
+                    <ListBox  x:Name="ListBox" 
+                              MouseDoubleClick="MouseButtonOpenTimetable_OnClick">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Открыть" 
+                                          Click="MenuItemOpenTimetable_OnClick"/>
+                                <MenuItem Header="Переименовать" Click="MenuItemRenameTimetable_OnClick"/>
+                                <MenuItem Header="Удалить" Click="MenuItemDeleteTimetable_OnClick"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                    
+                </StackPanel>
+                </ScrollViewer>
+            </materialDesign:Card>
+        </Grid>
+        <Grid x:Name="UserNewTimetableGrid" Visibility="Collapsed"> 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:Card VerticalAlignment="Top" FontSize="13" Grid.ColumnSpan="2">
+                <Menu>
+                    <MenuItem Click="MenuItemReturnMainGrid_OnClick">
+                        <MenuItem.Icon>
+                            <Image Source="Images/backspace.png" Stretch="UniformToFill"></Image>
+                        </MenuItem.Icon>
                     </MenuItem>
-                    <Separator />
-                    <MenuItem Header="Exit" ></MenuItem>
-                </MenuItem>
-                <MenuItem Header="Edit" ></MenuItem>
-                <MenuItem Header="View" Click="GetFiles_OnClick"></MenuItem>
-                <MenuItem Header="Exit" Click="MenuItemExit_OnClick"></MenuItem>
-            </Menu>
-        </materialDesign:Card>
-        <materialDesign:Card Grid.Row="1" Grid.Column="0" Margin="0,1,0,0">
-            <ListBox  x:Name="ListBox">
-                <ListBox.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Открыть"></MenuItem>
-                        <MenuItem Header="Переименовать"></MenuItem>
-                        <MenuItem Header="Удалить"></MenuItem>
-                    </ContextMenu>
-                </ListBox.ContextMenu>
-            </ListBox>
-        </materialDesign:Card>
+                </Menu>
+            </materialDesign:Card>
+        </Grid>
+        <Grid x:Name="OpenUserTimetableGrid" Visibility="Collapsed"> 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:Card VerticalAlignment="Top" FontSize="13" Grid.ColumnSpan="2">
+                <Menu>
+                    <MenuItem Click="MenuItemReturnMainGrid_OnClick">
+                        <MenuItem.Icon>
+                            <Image Source="Images/backspace.png" Stretch="UniformToFill"></Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <TextBlock x:Name="UserTimetableTextBlock"></TextBlock>
+                </Menu>
+            </materialDesign:Card>
+            <Grid Grid.Row="1" Grid.Column="0" x:Name="Grid"></Grid>
+        </Grid>
     </Grid>
 </Window>
