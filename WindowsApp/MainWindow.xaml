@@ -32,7 +32,6 @@
                 </Menu>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="1" Grid.Column="0" Margin="0,1,0,0">
-                
                 <ScrollViewer>
                 <StackPanel>
                     <materialDesign:Card>
@@ -53,25 +52,6 @@
                     
                 </StackPanel>
                 </ScrollViewer>
-            </materialDesign:Card>
-        </Grid>
-        <Grid x:Name="UserNewTimetableGrid" Visibility="Collapsed"> 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <materialDesign:Card VerticalAlignment="Top" FontSize="13" Grid.ColumnSpan="2">
-                <Menu>
-                    <MenuItem Click="MenuItemReturnMainGrid_OnClick">
-                        <MenuItem.Icon>
-                            <Image Source="Images/backspace.png" Stretch="UniformToFill"></Image>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </Menu>
             </materialDesign:Card>
         </Grid>
         <Grid x:Name="OpenUserTimetableGrid" Visibility="Collapsed"> 

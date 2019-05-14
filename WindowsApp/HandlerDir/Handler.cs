@@ -1,4 +1,5 @@
 using CreateSchedule;
+using CreateSchedule.Logic;
 
 namespace WindowsApp.HandlerDir
 {
