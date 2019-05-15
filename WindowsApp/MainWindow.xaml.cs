@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Input;
 using WindowsApp.Logic;
 using WindowsApp.OterWindow;
+using WindowsApp.OtherWindow;
 using MaterialDesignThemes.Wpf;
 
 namespace WindowsApp
@@ -39,23 +40,14 @@ namespace WindowsApp
             getText.GetTextButton.Click += (senderSlave, eSlave) =>
             {
                 string nameFile = getText.TextBox.Text;
-                string patch = $"{_workFile.GetDirPath()}\\{nameFile}.txt";
+                string patch = $"{_workFile.GetUserSavePath()}\\{nameFile}.txt";
                 StreamWriter file = new StreamWriter(patch);
-                file.Write("текст");
                 file.Close();
                 getText.Close();
                 GetFiles_OnClick(sender,e);
             };
             getText.Show();
             
-        }
-        /// <summary>
-        /// Вернуться к главному меню
-        /// </summary>
-        private void MenuItemReturnMainGrid_OnClick(object sender, RoutedEventArgs e)
-        {
-            OpenUserTimetableGrid.Visibility = Visibility.Collapsed;
-            MainGrid.Visibility = Visibility.Visible;
         }
         /// <summary>
         /// Запрос по выбору из выплывающего меню
@@ -77,32 +69,15 @@ namespace WindowsApp
         /// </summary>
         private void OpenTimetable()
         {
-            MainGrid.Visibility = Visibility.Collapsed;
-            OpenUserTimetableGrid.Visibility = Visibility.Visible;
-            UserTimetableTextBlock.Text = (string) ListBox.SelectedItems[0];
-
-            string newPatch = $"c:\\WindowsAppDir\\{(string) ListBox.SelectedItems[0]}.txt";
-            var fileR = new StreamReader(newPatch);
-            string fileText = "";
-            string line;
-            while ((line = fileR.ReadLine()) != null)
-            {
-                fileText += line;
-            }
-            fileR.Close();
-            Card asd = new Card
-            {
-                Content = fileText,
-                Margin = new Thickness(0,1,0,0),
-                Padding = new Thickness(5)
-                
-            };
-            Grid.Children.Add(asd);
+            TimetableWindow timetableWindow = new TimetableWindow((string) ListBox.SelectedItems[0]);
+            timetableWindow.Title = ListBox.SelectedItems[0].ToString();
+            timetableWindow.Show();
+            Close();
         }
 
         private List<string> GetFileNames()
         {
-            var dirPath = "c:\\WindowsAppDir";
+            var dirPath = _workFile.GetUserSavePath();
             var filePaths = Directory.GetFiles(dirPath);
             return filePaths.Select(Path.GetFileNameWithoutExtension).ToList();
         }
@@ -121,8 +96,8 @@ namespace WindowsApp
             getText.GetTextButton.Click += (senderSlave, eSlave) =>
             {
                 string newNameFile = getText.TextBox.Text;
-                string newPatch = $"c:\\WindowsAppDir\\{(string) ListBox.SelectedItems[0]}.txt";
-                File.Move(newPatch, $"c:\\WindowsAppDir\\{newNameFile}.txt");
+                string newPatch = $"{_workFile.GetUserSavePath()}\\{(string) ListBox.SelectedItems[0]}.txt";
+                File.Move(newPatch, $"{_workFile.GetUserSavePath()}\\{newNameFile}.txt");
                 getText.Close();
                 GetFiles_OnClick(sender,e);
             };
@@ -133,7 +108,7 @@ namespace WindowsApp
         /// </summary>
         private void MenuItemDeleteTimetable_OnClick(object sender, RoutedEventArgs e)
         {
-            string newPatch = $"c:\\WindowsAppDir\\{(string) ListBox.SelectedItems[0]}.txt";
+            string newPatch = $"{_workFile.GetUserSavePath()}\\{(string) ListBox.SelectedItems[0]}.txt";
             File.Delete(newPatch);
             GetFiles_OnClick(sender,e);
         }

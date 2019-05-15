@@ -38,11 +38,12 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Creation.cs" />
-        <Compile Include="Developments.cs" />
+        <Compile Include="Logic\Creation.cs" />
+        <Compile Include="Objects\Developments.cs" />
+        <Compile Include="Objects\Event.cs" />
+        <Compile Include="Objects\SchoolTimetable.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Event.cs" />
-        <Compile Include="UniversityTimetable.cs" />
+        <Compile Include="WorkWithData\GenericFile.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

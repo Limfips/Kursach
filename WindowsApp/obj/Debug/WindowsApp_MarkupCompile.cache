@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Kursach\Cod\WindowsApp\WindowsApp\obj\Debug\
+D:\RiderProjects\Kursach\Cod\WindowsApp\WindowsApp\obj\Debug\
 WindowsApp
 none
 false
 DEBUG;TRACE
-E:\Kursach\Cod\WindowsApp\WindowsApp\App.xaml
-11151548125
+D:\RiderProjects\Kursach\Cod\WindowsApp\WindowsApp\App.xaml
+5400242574
 
-71731037050
-12-1495734531
-MainWindow.xaml;
+1683967371
+13-1412635495
+Experiment\NewWindow.xaml;Experiment\Timetable.xaml;MainWindow.xaml;OtherWindow\GetText.xaml;OtherWindow\TimetableWindow.xaml;
 
 False
 

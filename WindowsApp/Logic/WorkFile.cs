@@ -4,23 +4,25 @@ namespace WindowsApp.Logic
 {
     public class WorkFile
     {
-        private const string DirPath = "c:\\WindowsAppDir\\UserSave";
+        private const string UserSavePath = "c:\\WindowsAppDir\\UserSave";
         private const string SourcePath = "c:\\WindowsAppDir\\Source";
 
         public void CheckStarted()
         {
-            if (!Directory.Exists(DirPath))
+            if (!Directory.Exists(UserSavePath))
             {
-                Directory.CreateDirectory(DirPath);
+                Directory.CreateDirectory(UserSavePath);
                 Directory.CreateDirectory(SourcePath);
             }
         }
-        public string GetDirPath()
+        public string GetUserSavePath()
         {
-            return DirPath;
+            return UserSavePath;
         }
-
-        
+        public string GetSourcePath()
+        {
+            return SourcePath;
+        }
         public void RenameFile()
         {
             

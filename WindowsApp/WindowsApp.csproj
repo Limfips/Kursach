@@ -48,6 +48,7 @@
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
+        <Reference Include="System.Drawing" />
         <Reference Include="System.Xml" />
         <Reference Include="System.Xaml">
             <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -61,6 +62,8 @@
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
+        <Page Include="Experiment\NewWindow.xaml" />
+        <Page Include="Experiment\Timetable.xaml" />
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
@@ -69,15 +72,34 @@
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
-        <Compile Include="configs\CheckProgram.cs" />
-        <Compile Include="configs\GenericFile.cs" />
+        <Compile Include="Experiment\Events.cs" />
+        <Compile Include="Experiment\NewWindow.xaml.cs">
+          <DependentUpon>NewWindow.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Experiment\Timetable.xaml.cs">
+          <DependentUpon>Timetable.xaml</DependentUpon>
+        </Compile>
         <Compile Include="HandlerDir\Handler.cs" />
+        <Compile Include="Logic\WorkFile.cs" />
         <Compile Include="MainWindow.xaml.cs">
             <DependentUpon>MainWindow.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+        <Page Include="OtherWindow\GetText.xaml" />
+        <Page Include="OtherWindow\TimetableWindow.xaml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="OtherWindow\GetText.xaml.cs">
+          <DependentUpon>GetText.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="OtherWindow\TimetableWimdow.xaml.cs">
+          <DependentUpon>TimetableWindow.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="OtherClasses\Event.cs" />
+        <Compile Include="OtherClasses\School\Classroom.cs" />
+        <Compile Include="OtherClasses\School\Lesson.cs" />
+        <Compile Include="OtherClasses\School\SchoolTeachers.cs" />
+        <Compile Include="OtherClasses\School\SchoolTimeTable.cs" />
         <Compile Include="Properties\AssemblyInfo.cs">
             <SubType>Code</SubType>
         </Compile>

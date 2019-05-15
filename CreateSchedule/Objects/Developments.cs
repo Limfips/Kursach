@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
 
-namespace CreateSchedule
+namespace CreateSchedule.Objects
 {
     public class Developments
     {

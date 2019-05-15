@@ -1,4 +1,4 @@
-﻿namespace CreateSchedule
+﻿namespace CreateSchedule.Logic
 {
     public class Creation
     {
