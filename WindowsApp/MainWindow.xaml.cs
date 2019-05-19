@@ -40,7 +40,7 @@ namespace WindowsApp
             getText.GetTextButton.Click += (senderSlave, eSlave) =>
             {
                 string nameFile = getText.TextBox.Text;
-                string patch = $"{_workFile.GetUserSavePath()}\\{nameFile}.txt";
+                string patch = string.Format("{0}\\{1}.txt", _workFile.GetUserSavePath(), nameFile);
                 StreamWriter file = new StreamWriter(patch);
                 file.Close();
                 getText.Close();
@@ -96,8 +96,9 @@ namespace WindowsApp
             getText.GetTextButton.Click += (senderSlave, eSlave) =>
             {
                 string newNameFile = getText.TextBox.Text;
-                string newPatch = $"{_workFile.GetUserSavePath()}\\{(string) ListBox.SelectedItems[0]}.txt";
-                File.Move(newPatch, $"{_workFile.GetUserSavePath()}\\{newNameFile}.txt");
+                string newPatch = string.Format("{0}\\{1}.txt", _workFile.GetUserSavePath(),
+                    (string) ListBox.SelectedItems[0]);
+                File.Move(newPatch, string.Format("{0}\\{1}.txt", _workFile.GetUserSavePath(), newNameFile));
                 getText.Close();
                 GetFiles_OnClick(sender,e);
             };
@@ -108,7 +109,8 @@ namespace WindowsApp
         /// </summary>
         private void MenuItemDeleteTimetable_OnClick(object sender, RoutedEventArgs e)
         {
-            string newPatch = $"{_workFile.GetUserSavePath()}\\{(string) ListBox.SelectedItems[0]}.txt";
+            string newPatch = string.Format("{0}\\{1}.txt", _workFile.GetUserSavePath(),
+                (string) ListBox.SelectedItems[0]);
             File.Delete(newPatch);
             GetFiles_OnClick(sender,e);
         }

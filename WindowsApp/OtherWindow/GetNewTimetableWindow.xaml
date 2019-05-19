@@ -1,0 +1,56 @@
+<Window x:Class="WindowsApp.OtherWindow.GetNewTimetableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:WindowsApp.OtherWindow"
+        mc:Ignorable="d"
+        Title="GetNewTimetableWindow" Height="400" Width="310" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Padding="10" Header="Свойства">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Название ивента:" VerticalAlignment="Center" 
+                           Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="NameTextBox" VerticalAlignment="Center" 
+                         Grid.Row="0" Grid.Column="1"/>
+                <TextBlock Text="Весь день:"  VerticalAlignment="Center"
+                           Grid.Row="1" Grid.Column="0"/>
+                <CheckBox   VerticalAlignment="Center"
+                    Grid.Row="1" Grid.Column="1"/>
+                <TextBlock Text="Начало"  VerticalAlignment="Center"
+                           Grid.Row="2" Grid.Column="0"/>
+                <DatePicker x:Name="StartDatePicker"  VerticalAlignment="Center"
+                            Grid.Row="2" Grid.Column="1"/>
+                <TextBlock Text="Конец"  VerticalAlignment="Center"
+                           Grid.Row="3" Grid.Column="0"/>
+                <DatePicker x:Name="EndDatePicker"  VerticalAlignment="Center"
+                            Grid.Row="3" Grid.Column="1"/>
+                <TextBlock Text="Повтор"  VerticalAlignment="Center" 
+                           Grid.Row="4" Grid.Column="0"/>
+                <ComboBox x:Name="RepeatComboBox" VerticalAlignment="Center"
+                    Grid.Row="4" Grid.Column="1"/>
+                <TextBlock Text="Описание"  VerticalAlignment="Center"
+                           Grid.Row="5" Grid.Column="0"/>
+                <TextBox x:Name="DetailsTextBox"  VerticalAlignment="Center"
+                         Grid.Row="5" Grid.Column="1"/>
+            </Grid>
+        </GroupBox>
+        <Button Grid.Row="1" Content="+" Height="40" x:Name="Button"/>
+    </Grid>
+</Window>

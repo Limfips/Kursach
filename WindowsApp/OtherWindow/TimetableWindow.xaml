@@ -9,7 +9,25 @@
         Closing="TimetableWindow_OnClosing"
         Title="TimetableWindow" Height="450" Width="800" MinWidth="800" MinHeight="450">
     <Grid ShowGridLines="True" x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -27,32 +45,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Margin="5" Text="Время"/>
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="10:00" Margin="5"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="10:30" Margin="5"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="11:00" Margin="5"/>
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="11:30" Margin="5"/>
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="12:00" Margin="5"/>
-        <TextBlock Grid.Row="6" Grid.Column="0" Text="12:30" Margin="5"/>
-        <TextBlock Grid.Row="7" Grid.Column="0" Text="13:00" Margin="5"/>
-        <TextBlock Grid.Row="8" Grid.Column="0" Text="13:30" Margin="5"/>
-        <TextBlock Grid.Row="9" Grid.Column="0" Text="14:00" Margin="5"/>
-        <TextBlock Grid.Row="10" Grid.Column="0" Text="14:30" Margin="5"/>
-        <TextBlock Grid.Row="11" Grid.Column="0" Text="15:00" Margin="5"/>
-        <TextBlock Grid.Row="12" Grid.Column="0" Text="15:30" Margin="5"/>
-        <TextBlock Grid.Row="13" Grid.Column="0" Text="16:00" Margin="5"/>
-        <TextBlock Grid.Row="14" Grid.Column="0" Text="16:30" Margin="5"/>
-        <TextBlock Grid.Row="15" Grid.Column="0" Text="17:00" Margin="5"/>
-        <Line/>
+            <Button Grid.Row="0" Grid.Column="0" Margin="2"
+                Content="+" Click="ButtonBase_OnClick"/>
     </Grid>
 </Window>
