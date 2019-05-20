@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using WindowsApp.Logic;
 using WindowsApp.OtherClasses;
@@ -14,11 +16,18 @@ namespace WindowsApp.OtherWindow
     public partial class TimetableWindow : Window
     {
         private static string _nameFile;
+        private TextBlock _textBlock = new TextBlock();
         private static readonly WorkFile WorkFile = new WorkFile();
         private readonly SchoolTimeTable _schoolTimeTable;
         public TimetableWindow(string nameFile)
         {
             InitializeComponent();
+            
+            MainGrid.Children.Add(_textBlock);
+            Grid.SetColumn(_textBlock, 0);
+            Grid.SetRow(_textBlock, 0);
+            
+           //MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
 //            _nameFile = nameFile;
 //
 //            _schoolTimeTable = WorkFile.GetDataUser(_nameFile);
@@ -29,24 +38,43 @@ namespace WindowsApp.OtherWindow
 //                Print(lesson);
 //            }
             GenericTimetable();
+//            for (int i = 2; i < 5; i++)
+//            {
+//                Button button = new Button();
+//                button.Width = 500;
+//                button.Height = 200;
+//                button.VerticalAlignment = VerticalAlignment.Top;
+//                button.Margin = new Thickness(3);
+//                MainGrid.Children.Add(button);
+//                Grid.SetColumn(button, i);
+//                var x = button.Height;
+//                int k = 1;
+//                while (x > 60)
+//                {
+//                    x -= 60;
+//                    k++;
+//                }
+//                Grid.SetRow(button, 3);
+//                Grid.SetRowSpan(button, k);
+//            }
+
         }
 
         private  void GenericTimetable()
         {
-            for (var i = 1; i < 24; i++)
+            for (int i = 1, k = 0; k < 24; i+=2, k++)
             {
                 var textBlock = new TextBlock();
-                textBlock.Text = i<10 ? $"0{i}:00" : $"{i}:00";
+                textBlock.Text = k<10 ? $"0{k}:00" : $"{k}:00";
                 MainGrid.Children.Add(textBlock);
                 textBlock.VerticalAlignment = VerticalAlignment.Center;
                 textBlock.HorizontalAlignment = HorizontalAlignment.Center;
                 textBlock.FontSize = 16;
                 textBlock.Margin = new Thickness(3);
-                Grid.SetColumn(textBlock, 0);
-                Grid.SetRow(textBlock, i);
+                Grid.SetColumn(textBlock, 1);
+                Grid.SetRow(textBlock, i+1);
             }
         }
-
         private void TimetableWindow_OnClosing(object sender, CancelEventArgs e)
         {
             WorkFile.SaveDate(_schoolTimeTable.Lessons,_nameFile);
@@ -95,6 +123,13 @@ namespace WindowsApp.OtherWindow
             card.Content = grid;
             //ToDo List
             // ListBox.Items.Add(card);
+        }
+
+        //ToDo Метод обработки данных с калдендаря
+        private void Calendar_OnSelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateTime? dateTime = Calendar.SelectedDate;
+            if (dateTime != null) _textBlock.Text = ((DateTime) dateTime).DayOfWeek.ToString();
         }
     }
 }
