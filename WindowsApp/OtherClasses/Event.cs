@@ -4,11 +4,11 @@ namespace WindowsApp.OtherClasses
 {
     public  class Event
     {
-        public string Name { get; }
-        public DateTime StartEvent;
-        public DateTime EndEvent { get; }
-        public RepeatCategories RepeatEvent { get; }
-        public string Details { get; }
+        public string Name { get; set; }
+        public DateTime StartEvent{ get; set; }
+        public DateTime EndEvent { get; set; }
+        public RepeatCategories RepeatEvent { get; set; }
+        public string Details { get; set; }
 
         protected Event(
             string name,

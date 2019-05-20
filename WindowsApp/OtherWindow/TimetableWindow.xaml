@@ -10,7 +10,7 @@
         Closing="TimetableWindow_OnClosing"
         Title="TimetableWindow" Height="450" Width="800" MinWidth="800" MinHeight="450">
     <Window.Resources>
-        <SolidColorBrush Color="#898e87" x:Key="ButtonFontColor" />
+        <SolidColorBrush Color="#6ec6ff" x:Key="MyColor" />
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -99,7 +99,6 @@
                 <Border Grid.Row="0" Grid.RowSpan="49" Grid.Column="10" Width="1" Margin="0,3,0,3" Background="#8888"/>
                 <Border Grid.Row="0" Grid.RowSpan="49" Grid.Column="12" Width="1" Margin="0,3,0,3" Background="#8888"/>
                 <Border Grid.Row="0" Grid.RowSpan="49" Grid.Column="14" Width="1" Margin="0,3,0,3" Background="#8888"/>
-               
                 <Border Grid.Row="1" Grid.ColumnSpan="16" Grid.Column="1" Height="1" Margin="0,1,0,1" Background="#8888"/>
                 <Border Grid.Row="3" Grid.ColumnSpan="16" Grid.Column="1" Height="1" Margin="0,1,0,1" Background="#8888"/>
                 <Border Grid.Row="5" Grid.ColumnSpan="16" Grid.Column="1" Height="1" Margin="0,1,0,1" Background="#8888"/>
@@ -124,8 +123,6 @@
                 <Border Grid.Row="43" Grid.ColumnSpan="16" Grid.Column="1" Height="1" Margin="0,1,0,1" Background="#8888"/>
                 <Border Grid.Row="45" Grid.ColumnSpan="16" Grid.Column="1" Height="1" Margin="0,1,0,1" Background="#8888"/>
                 <Border Grid.Row="47" Grid.ColumnSpan="16" Grid.Column="1" Height="1" Margin="0,1,0,1" Background="#8888"/>
-                
-                
             </Grid>
         </ScrollViewer>
         <Border Grid.Column="1" Width="1" Margin="0,3,0,3" Background="#8888"/>

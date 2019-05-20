@@ -20,6 +20,8 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -37,18 +39,22 @@
                            Grid.Row="2" Grid.Column="0"/>
                 <DatePicker x:Name="StartDatePicker"  VerticalAlignment="Center"
                             Grid.Row="2" Grid.Column="1"/>
+                <TextBox Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" x:Name="StartTimeHourTextBox" />
+                <TextBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" x:Name="StartTimeMinutesTextBox" />
                 <TextBlock Text="Конец"  VerticalAlignment="Center"
-                           Grid.Row="3" Grid.Column="0"/>
-                <DatePicker x:Name="EndDatePicker"  VerticalAlignment="Center"
-                            Grid.Row="3" Grid.Column="1"/>
-                <TextBlock Text="Повтор"  VerticalAlignment="Center" 
                            Grid.Row="4" Grid.Column="0"/>
+                <DatePicker x:Name="EndDatePicker"  VerticalAlignment="Center"
+                            Grid.Row="4" Grid.Column="1"/>
+                <TextBox Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" x:Name="EndTimeHourTextBox" />
+                <TextBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" x:Name="EndTimeMinutesTextBox" />
+                <TextBlock Text="Повтор"  VerticalAlignment="Center" 
+                           Grid.Row="6" Grid.Column="0"/>
                 <ComboBox x:Name="RepeatComboBox" VerticalAlignment="Center"
-                    Grid.Row="4" Grid.Column="1"/>
+                    Grid.Row="6" Grid.Column="1"/>
                 <TextBlock Text="Описание"  VerticalAlignment="Center"
-                           Grid.Row="5" Grid.Column="0"/>
+                           Grid.Row="7" Grid.Column="0"/>
                 <TextBox x:Name="DetailsTextBox"  VerticalAlignment="Center"
-                         Grid.Row="5" Grid.Column="1"/>
+                         Grid.Row="7" Grid.Column="1"/>
             </Grid>
         </GroupBox>
         <Button Grid.Row="1" Content="+" Height="40" x:Name="Button"/>
