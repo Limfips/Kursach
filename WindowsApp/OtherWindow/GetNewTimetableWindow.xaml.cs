@@ -1,6 +1,7 @@
 using System;
 using System.Windows;
 using WindowsApp.OtherClasses;
+using WindowsApp.OtherClasses.Final;
 
 
 namespace WindowsApp.OtherWindow
@@ -16,11 +17,6 @@ namespace WindowsApp.OtherWindow
                 RepeatComboBox.Items.Add(item);
             }
         }
-
-//        private Lesson GetNewLesson()
-//        {
-//            return new Lesson("",new DateTime(),"");
-//        }
 
     }
 }

@@ -1,14 +1,14 @@
 using System;
 
-namespace WindowsApp.OtherClasses
+namespace WindowsApp.OtherClasses.Final
 {
-    public  class Event
+    public class Event
     {
-        public string Name { get; set; }
-        public DateTime StartEvent{ get; set; }
-        public DateTime EndEvent { get; set; }
-        public RepeatCategories RepeatEvent { get; set; }
-        public string Details { get; set; }
+        internal string Name { get; set; }
+        internal DateTime StartEvent{ get; set; }
+        internal DateTime EndEvent { get; set; }
+        internal RepeatCategories RepeatEvent { get; set; }
+        internal string Details { get; set; }
 
         protected Event(
             string name,
@@ -24,16 +24,20 @@ namespace WindowsApp.OtherClasses
             Details = details;
         }
 
-        public enum Categories
+        protected enum Categories
         {
             SchoolTimetable,
+            UniversityTimetable,
             OtherEvents
         }
 
         public enum RepeatCategories
         {
+            Once,
             Everyday,
-            EveryWeek
+            EveryWeek,
+            EveryMonth,
+            EveryYear
         }
         
     }

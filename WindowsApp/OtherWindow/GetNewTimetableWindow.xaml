@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WindowsApp.OtherWindow"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="GetNewTimetableWindow" Height="400" Width="310" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>

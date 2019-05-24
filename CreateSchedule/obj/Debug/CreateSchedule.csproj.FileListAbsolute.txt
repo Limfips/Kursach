@@ -10,3 +10,8 @@ D:\RiderProjects\Kursach\Cod\WindowsApp\CreateSchedule\obj\Debug\CreateSchedule.
 D:\RiderProjects\Kursach\Cod\WindowsApp\CreateSchedule\obj\Debug\CreateSchedule.pdb
 D:\RiderProjects\Kursach\Cod\WindowsApp\CreateSchedule\obj\Debug\CreateSchedule.csprojAssemblyReference.cache
 D:\RiderProjects\Kursach\Cod\WindowsApp\CreateSchedule\obj\Debug\CreateSchedule.csproj.CoreCompileInputs.cache
+F:\RiderProjects\Kursach\Cod\WindowsApp\CreateSchedule\bin\Debug\CreateSchedule.dll
+F:\RiderProjects\Kursach\Cod\WindowsApp\CreateSchedule\bin\Debug\CreateSchedule.pdb
+F:\RiderProjects\Kursach\Cod\WindowsApp\CreateSchedule\obj\Debug\CreateSchedule.csprojResolveAssemblyReference.cache
+F:\RiderProjects\Kursach\Cod\WindowsApp\CreateSchedule\obj\Debug\CreateSchedule.dll
+F:\RiderProjects\Kursach\Cod\WindowsApp\CreateSchedule\obj\Debug\CreateSchedule.pdb

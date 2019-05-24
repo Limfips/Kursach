@@ -2,26 +2,30 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Windows;
 using System.Windows.Input;
 using WindowsApp.Logic;
 using WindowsApp.OterWindow;
+using WindowsApp.OtherClasses;
+using WindowsApp.OtherClasses.Final;
 using WindowsApp.OtherWindow;
+using CreateSchedule.Objects;
 using MaterialDesignThemes.Wpf;
+using Event = CreateSchedule.Objects.Event;
 
 namespace WindowsApp
 {
     public partial class MainWindow
     {
         private readonly WorkFile _workFile = new WorkFile();
+        
         public MainWindow()
         {
             InitializeComponent();
             _workFile.CheckStarted();
             ListBox.ItemsSource = GetFileNames();
-//            Timetable timetable = new Timetable();
-//            timetable.Show();
-//            Close();
+            Handle handle = new Handle();
         }
 
         /// <summary>
@@ -36,17 +40,19 @@ namespace WindowsApp
         /// </summary>
         private void MenuItemCreateTimetable_OnClick(object sender, RoutedEventArgs e)
         {
-            GetText getText = new GetText("");
-            getText.GetTextButton.Click += (senderSlave, eSlave) =>
-            {
-                string nameFile = getText.TextBox.Text;
-                string patch = string.Format("{0}\\{1}.txt", _workFile.GetUserSavePath(), nameFile);
-                StreamWriter file = new StreamWriter(patch);
-                file.Close();
-                getText.Close();
-                GetFiles_OnClick(sender,e);
-            };
-            getText.Show();
+//            GetText getText = new GetText("");
+//            getText.GetTextButton.Click += (senderSlave, eSlave) =>
+//            {
+//                string nameFile = getText.TextBox.Text;
+//                string patch = string.Format("{0}\\{1}.txt", _workFile.GetUserSavePath(), nameFile);
+//                StreamWriter file = new StreamWriter(patch);
+//                file.Close();
+//                getText.Close();
+//                GetFiles_OnClick(sender,e);
+//            };
+//            getText.Show();
+            NewTimetable newTimetable = new NewTimetable();
+            newTimetable.Show();
             
         }
         /// <summary>

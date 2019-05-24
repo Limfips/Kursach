@@ -1,15 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using WindowsApp.Logic;
-using WindowsApp.OtherClasses;
-using WindowsApp.OtherClasses.School;
-using MaterialDesignThemes.Wpf;
 
 namespace WindowsApp.OtherWindow
 {
@@ -18,47 +13,50 @@ namespace WindowsApp.OtherWindow
         private static string _nameFile;
         private List<TextBlock> _daysWeek = new List<TextBlock>();
         private List<DateTime> _dateTimesWeek = new List<DateTime>();
+
         private static readonly WorkFile WorkFile = new WorkFile();
-        private readonly SchoolTimeTable _schoolTimeTable;
+
+        //private readonly SchoolTimeTable _schoolTimeTable;
         public TimetableWindow(string nameFile)
         {
             InitializeComponent();
             _nameFile = nameFile;
-            _schoolTimeTable = WorkFile.GetDataUser(_nameFile);
+            //_schoolTimeTable = WorkFile.GetDataUser(_nameFile);
             GenericTimetable();
-            
+
             //ToDo Закончить работу с последовательной генирацией
             //ToDo CardView в календарь
-            
+
         }
 
         /// <summary>
         /// Отрисовка таблицы, базовое
         /// </summary>
-        private  void GenericTimetable()
+        private void GenericTimetable()
         {
-            for (int i = 1, k = 0; k < 24; i+=2, k++)
+            for (int i = 1, k = 0; k < 24; i += 2, k++)
             {
                 var textBlock = new TextBlock();
-                textBlock.Text = k<10 ? $"0{k}:00" : $"{k}:00";
+                textBlock.Text = k < 10 ? $"0{k}:00" : $"{k}:00";
                 MainGrid.Children.Add(textBlock);
                 textBlock.VerticalAlignment = VerticalAlignment.Center;
                 textBlock.HorizontalAlignment = HorizontalAlignment.Center;
                 textBlock.FontSize = 16;
                 textBlock.Margin = new Thickness(3);
                 Grid.SetColumn(textBlock, 1);
-                Grid.SetRow(textBlock, i+1);
+                Grid.SetRow(textBlock, i + 1);
             }
-            
+
             DateTime dateTime = DateTime.Now;
             while (dateTime.DayOfWeek != DayOfWeek.Monday)
             {
                 dateTime = dateTime.AddDays(-1);
             }
-            for (int i = 3, k = 0; k < 8; i+=2, k++)
+
+            for (int i = 3, k = 0; k < 8; i += 2, k++)
             {
                 _dateTimesWeek.Add(dateTime);
-                TextBlock textBlock = new TextBlock {Text = dateTime.DayOfWeek+"\n"+dateTime.Day};
+                TextBlock textBlock = new TextBlock {Text = dateTime.DayOfWeek + "\n" + dateTime.Day};
                 MainGrid.Children.Add(textBlock);
                 textBlock.VerticalAlignment = VerticalAlignment.Center;
                 textBlock.HorizontalAlignment = HorizontalAlignment.Left;
@@ -69,22 +67,6 @@ namespace WindowsApp.OtherWindow
                 _daysWeek.Add(textBlock);
                 dateTime = dateTime.AddDays(1);
             }
-
-            Asdasd();
-        }
-
-        private void Asdasd()
-        {
-            foreach (var lesson in _schoolTimeTable.Lessons)
-            {
-                foreach (var dt in _dateTimesWeek)
-                {
-                    if (dt == lesson.StartEvent)
-                    {
-                        CreateCard(lesson,Brushes.Tan);
-                    }
-                }
-            }
         }
 
         /// <summary>
@@ -92,52 +74,52 @@ namespace WindowsApp.OtherWindow
         /// </summary>
         private void TimetableWindow_OnClosing(object sender, CancelEventArgs e)
         {
-            WorkFile.SaveDate(_schoolTimeTable.Lessons,_nameFile);
+            //WorkFile.SaveDate(_schoolTimeTable.Lessons,_nameFile);
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
         }
-        
-        
+
+
         //ToDo Подредачить
         /// <summary>
         /// Создание нового Event
         /// </summary>
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var getLesson = new GetNewTimetableWindow();
-                getLesson.Button.Click += (senderSlave, eSlave) =>
-                {
-                    Lesson lesson = new Lesson(getLesson.NameTextBox.Text, 
-                        Convert.ToDateTime(getLesson.StartDatePicker.ToString()),
-                        Convert.ToDateTime(getLesson.EndDatePicker.ToString()),
-                        (Event.RepeatCategories)Enum.Parse(typeof(Event.RepeatCategories),
-                            getLesson.RepeatComboBox.SelectedItem.ToString()),
-                        getLesson.DetailsTextBox.Text);
-                    
-                    lesson.StartEvent = lesson.StartEvent.AddHours(
-                        Convert.ToDouble(getLesson.StartTimeHourTextBox.Text));
-                    lesson.StartEvent = lesson.StartEvent.AddMinutes(
-                        Convert.ToDouble(getLesson.StartTimeMinutesTextBox.Text));
-                    
-                    lesson.EndEvent = lesson.EndEvent.AddHours(
-                        Convert.ToDouble(getLesson.EndTimeHourTextBox.Text));
-                    lesson.EndEvent = lesson.EndEvent.AddMinutes(
-                        Convert.ToDouble(getLesson.EndTimeMinutesTextBox.Text));
-                    
-                    _schoolTimeTable.Add(lesson);
-                    CreateCard(lesson, Brushes.Tan);
-                    MessageBox.Show("Вы создали EVENT");
-                    getLesson.Close();
-                };
-                getLesson.Show();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.ToString());
-            }
-        }
+//        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+//        {
+//            try
+//            {
+//                var getLesson = new GetNewTimetableWindow();
+//                getLesson.Button.Click += (senderSlave, eSlave) =>
+//                {
+//                    Lesson lesson = new Lesson(getLesson.NameTextBox.Text, 
+//                        Convert.ToDateTime(getLesson.StartDatePicker.ToString()),
+//                        Convert.ToDateTime(getLesson.EndDatePicker.ToString()),
+//                        (Event.RepeatCategories)Enum.Parse(typeof(Event.RepeatCategories),
+//                            getLesson.RepeatComboBox.SelectedItem.ToString()),
+//                        getLesson.DetailsTextBox.Text);
+//                    
+//                    lesson.StartEvent = lesson.StartEvent.AddHours(
+//                        Convert.ToDouble(getLesson.StartTimeHourTextBox.Text));
+//                    lesson.StartEvent = lesson.StartEvent.AddMinutes(
+//                        Convert.ToDouble(getLesson.StartTimeMinutesTextBox.Text));
+//                    
+//                    lesson.EndEvent = lesson.EndEvent.AddHours(
+//                        Convert.ToDouble(getLesson.EndTimeHourTextBox.Text));
+//                    lesson.EndEvent = lesson.EndEvent.AddMinutes(
+//                        Convert.ToDouble(getLesson.EndTimeMinutesTextBox.Text));
+//                    
+//                    _schoolTimeTable.Add(lesson);
+//                    CreateCard(lesson, Brushes.LightSlateGray);
+//                    MessageBox.Show("Вы создали EVENT");
+//                    getLesson.Close();
+//                };
+//                getLesson.Show();
+//            }
+//            catch (Exception exception)
+//            {
+//                MessageBox.Show(exception.ToString());
+//            }
+//        }
 
         /// <summary>
         /// При нажатии на дату в календаре, меняет значения таблицы
@@ -157,7 +139,7 @@ namespace WindowsApp.OtherWindow
                 for (int k = 0; k < 8; k++)
                 {
                     _dateTimesWeek[k] = secondDateTime;
-                    _daysWeek[k].Text = secondDateTime.DayOfWeek+"\n"+secondDateTime.Day;
+                    _daysWeek[k].Text = secondDateTime.DayOfWeek + "\n" + secondDateTime.Day;
                     if (dateTime.Equals(secondDateTime))
                     {
                         _daysWeek[k].Foreground = Brushes.DodgerBlue;
@@ -166,74 +148,73 @@ namespace WindowsApp.OtherWindow
                     {
                         _daysWeek[k].Foreground = Brushes.Black;
                     }
+
                     secondDateTime = secondDateTime.AddDays(1);
                 }
             }
-
-            Asdasd();
         }
 
-        /// <summary>
-        /// Создание CardView
-        /// </summary>
-        private void CreateCard(Lesson lesson, Brush color)
-        {
-            Card card = new Card();
-            Grid grid = new Grid();
-            DateTime q = new DateTime( lesson.EndEvent.Subtract(lesson.StartEvent).Ticks);
-            TextBlock textBlock = new TextBlock();
-            textBlock.Text = $"{lesson.Name}\n" +
-                             $"{lesson.StartEvent:d}\n" +
-                             $"{lesson.EndEvent:d}\n" +
-                             $"{lesson.Details}\n";
-            card.Margin = new Thickness(0,lesson.StartEvent.Minute,0,0);
-            
-            grid.Children.Add(textBlock);
-            card.Content = grid;
-            card.MinHeight = 100;
-            card.Height = q.Hour * 64 + q.Minute;
-            card.Padding = new Thickness(5);
-            card.MinWidth = 100;
-            card.Background = color;
-            MainGrid.Children.Add(card);
-            switch (lesson.StartEvent.DayOfWeek)
-            {
-                case DayOfWeek.Monday:
-                    Grid.SetColumn(card, 3);
-                    break;
-                case DayOfWeek.Tuesday:
-                    Grid.SetColumn(card, 5);
-                    break;
-                case DayOfWeek.Wednesday:
-                    Grid.SetColumn(card, 7);
-                    break;
-                case DayOfWeek.Thursday:
-                    Grid.SetColumn(card, 9);
-                    break;
-                case DayOfWeek.Friday:
-                    Grid.SetColumn(card, 11);
-                    break;
-                case DayOfWeek.Saturday:
-                    Grid.SetColumn(card, 13);
-                    break;
-                case DayOfWeek.Sunday:
-                    Grid.SetColumn(card, 15);
-                    break;
-            }
-            Grid.SetRow(card, lesson.StartEvent.Hour*2+1);
-            Grid.SetRowSpan(card, (int) Math.Ceiling((decimal) card.Height / 64 +1)*2);
-            
-            ContextMenu contextMenu = new ContextMenu();
-            MenuItem menuItem = new MenuItem();
-            menuItem.Header = "Delete";
-            menuItem.Click += (senderSlave, eSlave) =>
-            {
-                MainGrid.Children.Remove(card);
-                _schoolTimeTable.Remove(lesson);
-            };
-            contextMenu.Items.Add(menuItem);
-            card.ContextMenu = contextMenu;
-        }
+//        /// <summary>
+//        /// Создание CardView
+//        /// </summary>
+//        private void CreateCard(Lesson lesson, Brush color)
+//        {
+//            Card card = new Card();
+//            Grid grid = new Grid();
+//            DateTime q = new DateTime( lesson.EndEvent.Subtract(lesson.StartEvent).Ticks);
+//            TextBlock textBlock = new TextBlock();
+//            textBlock.Text = $"{lesson.Name}\n" +
+//                             $"{lesson.StartEvent:d}\n" +
+//                             $"{lesson.EndEvent:d}\n" +
+//                             $"{lesson.Details}\n";
+//            card.Margin = new Thickness(0,lesson.StartEvent.Minute,0,0);
+//            
+//            grid.Children.Add(textBlock);
+//            card.Content = grid;
+//            card.MinHeight = 100;
+//            card.Height = q.Hour * 64 + q.Minute;
+//            card.Padding = new Thickness(5);
+//            card.MinWidth = 100;
+//            card.Background = color;
+//            MainGrid.Children.Add(card);
+//            switch (lesson.StartEvent.DayOfWeek)
+//            {
+//                case DayOfWeek.Monday:
+//                    Grid.SetColumn(card, 3);
+//                    break;
+//                case DayOfWeek.Tuesday:
+//                    Grid.SetColumn(card, 5);
+//                    break;
+//                case DayOfWeek.Wednesday:
+//                    Grid.SetColumn(card, 7);
+//                    break;
+//                case DayOfWeek.Thursday:
+//                    Grid.SetColumn(card, 9);
+//                    break;
+//                case DayOfWeek.Friday:
+//                    Grid.SetColumn(card, 11);
+//                    break;
+//                case DayOfWeek.Saturday:
+//                    Grid.SetColumn(card, 13);
+//                    break;
+//                case DayOfWeek.Sunday:
+//                    Grid.SetColumn(card, 15);
+//                    break;
+//            }
+//            Grid.SetRow(card, lesson.StartEvent.Hour*2+1);
+//            Grid.SetRowSpan(card, (int) Math.Ceiling((decimal) card.Height / 64 +1)*2);
+//            
+//            ContextMenu contextMenu = new ContextMenu();
+//            MenuItem menuItem = new MenuItem();
+//            menuItem.Header = "Delete";
+//            menuItem.Click += (senderSlave, eSlave) =>
+//            {
+//                MainGrid.Children.Remove(card);
+//                _schoolTimeTable.Remove(lesson);
+//            };
+//            contextMenu.Items.Add(menuItem);
+//            card.ContextMenu = contextMenu;
+//        }
     }
 }
 

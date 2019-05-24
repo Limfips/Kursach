@@ -13,6 +13,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -77,23 +78,30 @@
     </Compile>
     <Page Include="OtherWindow\GetNewTimetableWindow.xaml" />
     <Page Include="OtherWindow\GetText.xaml" />
+    <Page Include="OtherWindow\NewTimetable.xaml" />
+    <Page Include="OtherWindow\SchoolTimetable.xaml" />
     <Page Include="OtherWindow\TimetableWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OtherClasses\Final\DataSource.cs" />
+    <Compile Include="OtherClasses\Final\Event.cs" />
+    <Compile Include="OtherClasses\Final\Handle.cs" />
+    <Compile Include="OtherClasses\Final\SchoolLesson.cs" />
     <Compile Include="OtherWindow\GetNewTimetableWindow.xaml.cs">
       <DependentUpon>GetNewTimetableWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="OtherWindow\GetText.xaml.cs">
       <DependentUpon>GetText.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OtherWindow\NewTimetable.xaml.cs">
+      <DependentUpon>NewTimetable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OtherWindow\SchoolTimetable.xaml.cs">
+      <DependentUpon>SchoolTimetable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OtherWindow\TimetableWimdow.xaml.cs">
       <DependentUpon>TimetableWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OtherClasses\Event.cs" />
-    <Compile Include="OtherClasses\School\Classroom.cs" />
-    <Compile Include="OtherClasses\School\Lesson.cs" />
-    <Compile Include="OtherClasses\School\SchoolTeachers.cs" />
-    <Compile Include="OtherClasses\School\SchoolTimeTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
